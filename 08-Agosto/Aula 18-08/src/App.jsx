@@ -1,14 +1,27 @@
 import "./App.css";
-import Unipar from "./Unipar.jsx";
-import Rodrigo from "./Rodrigo.jsx";
-import Button from "./Button.jsx";
-import ButtonProps from "./ButtonProps.jsx";
+import Unipar from "../../Unipar.jsx";
+import Rodrigo from "../../Rodrigo.jsx";
+import Button from "../../Button.jsx";
+import ButtonProps from "../../ButtonProps.jsx";
+import ProdutoProps from "./Produto.jsx";
 
 function App() {
   return (
-    <>
-      {/* <> Se chama Fragment que é um fragmento para rodar um bloco*/}
-      <div>
+    <ProdutoProps
+      produto="produto"
+      nomeP="Produto 1"
+      precoP="R$ 100,00"
+    />
+  );
+}
+export default App;
+
+
+
+
+
+ {/*Se chama Fragment que é um fragmento para rodar um bloco*/}
+      {/*<div>
         <Unipar />
         <Rodrigo />
         <p>Ele tem 190 anos e ainda esta na flor da idade</p>
@@ -35,7 +48,4 @@ function App() {
           classeBotao="ClasseAlerta"
         ></ButtonProps>
       </div>
-    </>
-  );
-}
-export default App;
+      */}
