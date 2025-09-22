@@ -1,13 +1,10 @@
 import { useState } from "react";
+import "./App.css";
 
 function App() {
   const [descInput, setDescInput] = useState("");
   const [qtdeInput, setQtdeInput] = useState(0);
   const [valrUniInput, setValrUniInput] = useState(0);
-
-  const [descOut, setDescOut] = useState();
-  const [qtdeOut, setQtdeOut] = useState();
-  const [valrUniOut, setValrUniOut] = useState();
 
   const [listaItens, setListaItens] = useState([]);
 
@@ -20,16 +17,12 @@ function App() {
       return;
     }
 
-    setDescOut(descInput);
-    setQtdeOut(qtdeInput);
-    setValrUniOut(valrUniInput);
-
     const novoItem = {
       id: Date.now(),
-      descricao: descOut,
-      quantidade: qtdeOut,
-      valorUnitario: valrUniOut,
-      valorTotal: qtdeOut * valrUniOut,
+      descricao: descInput,
+      quantidade: qtdeInput,
+      valorUnitario: valrUniInput,
+      valorTotal: qtdeInput * valrUniInput,
     };
 
     setListaItens([...listaItens, novoItem]);
@@ -41,59 +34,73 @@ function App() {
     setValrUniInput(0);
   };
 
+  const removerItem = (id) => {
+    setListaItens(listaItens.filter((item) => item.id != id));
+  };
+
   return (
     <>
-      <h2>Orçamento</h2>
+      <div className="quadro">
+        <h2>Orçamento</h2>
 
-      <div>
-        <input
-          type="text"
-          value={descInput}
-          placeholder="Descrição"
-          onChange={(e) => setDescInput(e.target.value)}
-        />
-        <input
-          type="number"
-          value={qtdeInput}
-          placeholder="Quantidade"
-          onChange={(e) => setQtdeInput(e.target.value)}
-        />
-        <input
-          type="number"
-          value={valrUniInput}
-          placeholder="Valor unitário"
-          onChange={(e) => setValrUniInput(e.target.value)}
-        />
-        <button onClick={adicionarItem}>+</button>
-      </div>
+        <div className="form">
+          <input
+            type="text"
+            value={descInput}
+            placeholder="Descrição"
+            onChange={(e) => setDescInput(e.target.value)}
+          />
+          <input
+            type="number"
+            value={qtdeInput}
+            onChange={(e) => setQtdeInput(Number(e.target.value))}
+          />
+          <input
+            type="number"
+            value={valrUniInput}
+            onChange={(e) => setValrUniInput(Number(e.target.value))}
+          />
+          <button onClick={adicionarItem}>+</button>
+        </div>
 
-      <table>
-        <tr>
-          <th>Descrição</th>
-          <th>Quantidade</th>
-          <th>Valor Unitário</th>
-          <th>Valor Total</th>
-        </tr>
-        {listaItens.map((item) => (
-          <tr key={item.id}>
-            <th>{item.descricao}</th>
-            <th>{item.quantidade}</th>
-            <th>{item.valorUnitario}</th>
-            <th>{item.valorTotal}</th>
-          </tr>
-        ))}
-      </table>
+        <table className="tabela">
+          <thead>
+            <tr>
+              <th>Descrição</th>
+              <th>Qtd</th>
+              <th>Unitário</th>
+              <th>Total</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          {listaItens.map((item) => (
+            <tbody key={item.id}>
+              <tr>
+                <th>{item.descricao}</th>
+                <th>{item.quantidade}</th>
+                <th>{item.valorUnitario}</th>
+                <th>{item.valorTotal}</th>
+                <th>
+                  <button onClick={() => removerItem(item.id)}>X</button>
+                </th>
+              </tr>
+            </tbody>
+          ))}
+        </table>
 
-      <table></table>
+        <div className="total">
+          <p>Total Geral: R$ {}</p>
+        </div>
 
-      <ul>
+        {/* <ul>
         {listaItens.map((item) => (
           <li key={item.id}>
             {item.descricao} - {item.quantidade} - {item.valorUnitario} -{" "}
             {item.valorTotal}
           </li>
         ))}
-      </ul>
+        </ul> */}
+      </div>
     </>
   );
 }
