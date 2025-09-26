@@ -8,6 +8,10 @@ function App() {
 
   const [listaItens, setListaItens] = useState([]);
 
+  const totalGeral = listaItens.reduce((soma, item) => {
+    return soma + item.valorTotal;
+  }, 0);
+
   const adicionarItem = () => {
     if (descInput.trim() == "") {
       return;
@@ -73,33 +77,23 @@ function App() {
               <th>Ações</th>
             </tr>
           </thead>
-          {listaItens.map((item) => (
-            <tbody key={item.id}>
-              <tr>
+          <tbody>
+            {listaItens.map((item) => (
+              <tr key={item.id}>
                 <th>{item.descricao}</th>
                 <th>{item.quantidade}</th>
-                <th>{item.valorUnitario}</th>
-                <th>{item.valorTotal}</th>
+                <th>R$ {item.valorUnitario.toFixed(2)}</th>
+                <th>R$ {item.valorTotal.toFixed(2)}</th>
                 <th>
                   <button onClick={() => removerItem(item.id)}>X</button>
                 </th>
               </tr>
-            </tbody>
-          ))}
+            ))}
+          </tbody>
         </table>
-
         <div className="total">
-          <p>Total Geral: R$ {}</p>
+          <p>Total Geral: R$ {totalGeral.toFixed(2)}</p>
         </div>
-
-        {/* <ul>
-        {listaItens.map((item) => (
-          <li key={item.id}>
-            {item.descricao} - {item.quantidade} - {item.valorUnitario} -{" "}
-            {item.valorTotal}
-          </li>
-        ))}
-        </ul> */}
       </div>
     </>
   );
