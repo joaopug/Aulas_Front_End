@@ -1,0 +1,15 @@
+.progresso {
+    width: 300px;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-top: 20px;
+    background-color: lightgray;
+}
+
+.barra {
+    height: 100%;
+    background-color: green;
+    border-radius: 5px;
+    transition: width 0.3s ease-in-out;
+}
