@@ -1,11 +1,16 @@
-import { useState, useRef } from 'react'
-import './ContadorCliques.css'
+import { useState, useRef } from "react";
+import "./ContadorCliques.css";
 
-// Neste exemplo o useRef "cliques" irá começar com 0 e quando o botão "Contar" for pressionado,
-// o valor presente em ".current" será incremetado e um console.log executado.
-//
-// Na tela o valor atualizado não será exibido, isto somente ocorrerá quando o botão "Forçar Render"
-// for pressionado.
+/* 
+  Neste exemplo o useRef "cliques" irá começar com 0 e quando o botão "Contar" for pressionado,
+  o valor presente em ".current" será incremetado e um console.log executado.
+
+  Na tela o valor atualizado não será exibido, isto somente ocorrerá quando o botão "Forçar Render"
+  for pressionado.
+
+  Esse botão atualiza o estado do state "render", ao fazer isso, uma re-renderização acontece, pois
+  o useState sempre re-renderiza a tela.
+*/
 
 function Contador() {
   const cliques = useRef(0);
@@ -17,7 +22,7 @@ function Contador() {
   }
 
   return (
-    <div className='caixa'>
+    <div className="caixa">
       <button onClick={contar}>Contar</button>
       <button onClick={() => setRender(!render)}>Forçar render</button>
       <p>Cliques: {cliques.current}</p>
@@ -25,4 +30,4 @@ function Contador() {
   );
 }
 
-export default Contador
+export default Contador;
