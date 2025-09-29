@@ -29,7 +29,6 @@ function App() {
     return resultado;
   }, [fatorialCom]);
 
-
   /* Código comparativo para ver a diferença de utilizar ou não o useMemo.
   
   Caso ocorra uma renderização nova, independemente se foi no "fatoriaSem", a função será executada,
@@ -49,7 +48,6 @@ function App() {
     return resultadoCom;
   };
 
-
   /* 
   Duas funções para alterar o state que será usado para ditar o className da div que terá seu tema alterado.
   */
@@ -60,7 +58,6 @@ function App() {
   const mudarTemaSemUseMemo = () => {
     setTemaSem(temaSem === "light" ? "dark" : "light");
   };
-
 
   /* 
   Aqui é onde a magia acontece. Primeiro o usuário terá que escolher: utilizar useMemo ou não.
@@ -80,39 +77,41 @@ function App() {
   */
   return (
     <>
-      <div className={temaCom}>
-        <h1>Usando useMemo</h1>
-        <h2>Selecione qual fatorial você deseja calcular 🔽</h2>
-        <input
-          type="number"
-          value={fatorialCom}
-          onChange={(e) => setFatorialCom(Number(e.target.value))}
-        />
-
-        <p>Resultado: {resultadoFatorialComUseMemo}</p>
-
-        <button onClick={mudarTemaComUseMemo}>
-          Mudar para o tema {temaCom === "light" ? "Escuro 🌒" : "Claro ☀️"}
-        </button>
-      </div>
-
-      {
-        <div className={temaSem}>
-          <h1>Sem useMemo</h1>
+      <div className="caixa">
+        <div className={temaCom}>
+          <h1>Usando useMemo</h1>
           <h2>Selecione qual fatorial você deseja calcular 🔽</h2>
           <input
             type="number"
-            value={fatorialSem}
-            onChange={(e) => setFatorialSem(Number(e.target.value))}
+            value={fatorialCom}
+            onChange={(e) => setFatorialCom(Number(e.target.value))}
           />
 
-          <p>Resultado: {resultadoFatorialSemUseMemo()}</p>
+          <p>Resultado: {resultadoFatorialComUseMemo}</p>
 
-          <button onClick={mudarTemaSemUseMemo}>
-            Mudar para tema {temaSem === "light" ? "Escuro 🌒" : "Claro ☀️"}
+          <button onClick={mudarTemaComUseMemo}>
+            Mudar para o tema {temaCom === "light" ? "Escuro 🌒" : "Claro ☀️"}
           </button>
         </div>
-      }
+
+        {
+          <div className={temaSem}>
+            <h1>Sem useMemo</h1>
+            <h2>Selecione qual fatorial você deseja calcular 🔽</h2>
+            <input
+              type="number"
+              value={fatorialSem}
+              onChange={(e) => setFatorialSem(Number(e.target.value))}
+            />
+
+            <p>Resultado: {resultadoFatorialSemUseMemo()}</p>
+
+            <button onClick={mudarTemaSemUseMemo}>
+              Mudar para tema {temaSem === "light" ? "Escuro 🌒" : "Claro ☀️"}
+            </button>
+          </div>
+        }
+      </div>
     </>
   );
 }

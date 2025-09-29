@@ -29,7 +29,7 @@ function App() {
   const [state, dispatch] = useReducer(reducer, { contador: 0 });
 
   return (
-    <div>
+    <div className="caixa">
       <h2>Contador com useReducer</h2>
       <h1>{state.contador}</h1>
 
