@@ -1,6 +1,12 @@
 import { useState, useRef } from 'react'
 import './ContadorCliques.css'
 
+// Neste exemplo o useRef "cliques" irá começar com 0 e quando o botão "Contar" for pressionado,
+// o valor presente em ".current" será incremetado e um console.log executado.
+//
+// Na tela o valor atualizado não será exibido, isto somente ocorrerá quando o botão "Forçar Render"
+// for pressionado.
+
 function Contador() {
   const cliques = useRef(0);
   const [render, setRender] = useState(false);
@@ -11,8 +17,8 @@ function Contador() {
   }
 
   return (
-    <div>
-      <button onClick={contar}>Contar clique</button>
+    <div className='caixa'>
+      <button onClick={contar}>Contar</button>
       <button onClick={() => setRender(!render)}>Forçar render</button>
       <p>Cliques: {cliques.current}</p>
     </div>
