@@ -30,8 +30,6 @@ function App() {
 
     setlistaTarefas([...listaTarefas, novaTarefa]);
 
-    
-
     console.log(listaTarefas);
     setTarefa("");
   };
