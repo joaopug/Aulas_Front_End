@@ -6,11 +6,9 @@ import "./App.css";
 //
 function App() {
   const [tarefa, setTarefa] = useState("");
-  const [listaTarefas, setlistaTarefas] = useState([]);
-
-  useEffect(() => {
-    setlistaTarefas(JSON.parse(localStorage.getItem("LISTA_TAREFAS")));
-  }, []);
+  const [listaTarefas, setlistaTarefas] = useState(() => {
+    return JSON.parse(localStorage.getItem("LISTA_TAREFAS")) || [];
+  });
 
   useEffect(() => {
     localStorage.setItem("LISTA_TAREFAS", JSON.stringify(listaTarefas));
