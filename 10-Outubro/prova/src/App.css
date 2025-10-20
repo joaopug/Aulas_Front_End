@@ -1,0 +1,113 @@
+#root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  max-width: 3000px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  padding: 20px;
+  border-radius: 8px;
+  border-color: #1a1a1a;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Remove as setas no Firefox */
+input[type=number] {
+  appearance: textfield;       
+  -moz-appearance: textfield;
+}
+
+body {
+  display: flex;
+  margin: 0;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  border: #1a1a1a;
+}
+
+.inputs{
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  padding-bottom: 2%;
+}
+input[type="date"] {
+    /* O Firefox tem o ícone mais difícil de estilizar. 
+       Aqui, estamos apenas dependendo do padding-right para forçar o espaçamento. */
+    padding-right: 20px; /* Aumente este valor se o WebKit não funcionar */
+}
+
+input {
+  max-width: 300px;
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.diferente {
+  display: flex;
+  justify-content: left;
+  gap: 20px;
+}
+
+.series {
+  max-width: 157px
+}
+
+.diferente button {
+  width: 21%;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-size: 90%;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  color: white;
+}
+
+.corpo {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2% auto;
+}
+
+.corpo th {
+  border: 1px solid #8d8d8d;
+  padding: 10px;
+}
+
+.corpo tbody th {
+  border: 1px solid #8d8d8d;
+  padding: 10px;
+}
+
+.corpo button {
+  width: 70%;
+  padding: 5%;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-size: 90%;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  color: white;
+  text-align: center;
+  font-weight: 700;
+}
+
+.rodape {
+  padding-top: 2%;
+  text-align: left;
+}
